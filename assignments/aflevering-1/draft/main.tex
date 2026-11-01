@@ -1,0 +1,312 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin=0.7in]{geometry}
+\usepackage{amsmath}
+
+
+\title{Aflevering  NuMe}
+\author{Carl-Emil Rohde \\ kvb125@alumni.ku.dk}
+\date{September 2023}
+
+\begin{document}
+
+\maketitle
+
+\section*{Problem 1}
+
+\subsection*{1.2.7}
+The big-O notation $f(n)=\mathcal{O}(g(n))$ means that there exists a constant $C>0$ and a value $n_0$ such that $f(n) \leq C \cdot g(n)$ for all $n>n_0$.
+Let's consider each of the assertions:
+\\
+\\
+a. $\frac{n+1}{n^2}=\mathcal{O}\left(\frac{1}{n}\right)$
+\\
+\\
+We have:
+$$
+\lim _{n \rightarrow \infty} \frac{\frac{n+1}{n^2}}{\frac{1}{n}}=\lim _{n \rightarrow \infty} \frac{n^2}{n+1}=\lim _{n \rightarrow \infty} \frac{n}{1+\frac{1}{n}}=\infty
+$$
+Since the limit is infinite, $\frac{n+1}{n^2} 1$ is not $\mathcal{O}\left(\frac{1}{n}\right)$. Therefore \textbf{not correct}
+\\
+\\
+b. $\frac{n+1}{\sqrt{n}}=\mathcal{O}(1)$
+\\
+\\
+For $n>1$, we can say $\frac{n+1}{\sqrt{n}} \leq \frac{n+n}{\sqrt{n}}=\frac{2 n}{\sqrt{n}}=2 \sqrt{n}$.
+Since $2 \sqrt{n}$ is not bounded as $n \rightarrow \infty$, this statement is \textbf{not correct}.
+\\
+\\
+c. $\frac{1}{\ln n}=\mathcal{O}\left(\frac{1}{n}\right)$
+\\
+\\
+We have:
+$$
+\lim _{n \rightarrow \infty} \frac{\frac{1}{\ln n}}{\frac{1}{n}}=\lim _{n \rightarrow \infty} \frac{n}{\ln n}=\infty
+$$
+Since the limit is infinite, the statement is \textbf{not correct}.
+\\
+\\
+d. $\frac{1}{n \ln n}=\mathcal{O}\left(\frac{1}{n}\right)$
+\\
+\\
+We have:
+$$
+\lim _{n \rightarrow \infty} \frac{\frac{1}{n \ln n}}{\frac{1}{n}}=\lim _{n \rightarrow \infty} \frac{1}{\ln n}=0
+$$
+Since the limit is 0 , the statement \textbf{is correct}.
+\\
+\\
+e. $\frac{e^n}{n^5}=\mathcal{O}\left(\frac{1}{n}\right)$
+\\
+\\
+We have:
+$$
+\lim _{n \rightarrow \infty} \frac{\frac{e^n}{n^5}}{\frac{1}{n}}=\lim _{n \rightarrow \infty} n \cdot \frac{e^n}{n^5}=\lim _{n \rightarrow \infty} \frac{e^n}{n^4}=\infty
+$$
+Since the limit is infinite, the statement is \textbf{not correct}.
+
+\subsection*{1.2.35}
+The statement "If $x_n=\mathcal{O}\left(\alpha_n\right)$, then $x_n=\mathcal{O}\left(\alpha_n\right)$ " is a tautology, meaning it is trivially true by definition.
+As for the converse, if taken literally, it is also a tautology and thus true. However, if the converse is interpreted as "If $x_n=o\left(\alpha_n\right)$, then $x_n=\mathcal{O}\left(\alpha_n\right)$," it is also true. This is because $o\left(\alpha_n\right)$ implies that $x_n$ grows much more slowly than $\alpha_n$, which is a subset of the conditions for $\mathcal{O}\left(\alpha_n\right)$. Therefore, the converse, under this interpretation, is also true.
+
+\subsection*{1.2.36}
+To prove \( x_n = \mathcal{O}(\alpha_n) \) and \( y_n = \mathcal{O}(\alpha_n) \) implies \( x_n + y_n = \mathcal{O}(\alpha_n) \), I consider the following:
+
+\begin{enumerate}
+    \item \( x_n = \mathcal{O}(\alpha_n) \) implies that \( \exists C_1, n_0 \) such that \( |x_n| \leq C_1 |\alpha_n| \) for \( n \geq n_0 \).
+    \item \( y_n = \mathcal{O}(\alpha_n) \) implies that \( \exists C_2, n_0 \) such that \( |y_n| \leq C_2 |\alpha_n| \) for \( n \geq n_0 \).
+\end{enumerate}
+\\
+\\
+We aim to find \( C \) and \( n_0 \) such that \( |x_n + y_n| \leq C |\alpha_n| \) for \( n \geq n_0 \).
+\\
+\\
+Using the triangle inequality, \( |x_n + y_n| \leq |x_n| + |y_n| \leq C_1 |\alpha_n| + C_2 |\alpha_n| = (C_1 + C_2) |\alpha_n| \).
+\\
+\\
+Thus, take \( C = C_1 + C_2 \) and \( n_0 \) as the maximum \( n_0 \) from the individual cases. This proves that \( x_n + y_n = \mathcal{O}(\alpha_n) \).
+
+\subsection*{2.1.39}
+I can represent repeating decimals as fractions using algebra. Below i have made the calculations for each case:
+\\
+\\
+\textbf{Case \(0.181818 \ldots\)}
+\\
+\\
+Let \( x = 0.181818 \ldots \).  I Multiply by 100 and subtract \( x \) to get:
+\[
+99x = 18 \quad \Rightarrow \quad x = \frac{18}{99} = \frac{2}{11}
+\]
+\\
+\\
+\textbf{Case \(2.7027027027 \ldots\)}
+\\
+\\
+Let \( x = 2.7027027027 \ldots \). I Multiply by 1000 and subtract \( x \) to get:
+\[
+999x = 2700 \quad \Rightarrow \quad x = \frac{2700}{999} = \frac{100}{37}
+\]
+\\
+\\
+\textbf{Case \(98.1981981981 \ldots\)}
+\\
+\\
+Let \( x = 98.1981981981 \ldots \). I Multiply by 1000 and subtract \( x \) to get:
+\[
+999x = 98100 \quad \Rightarrow \quad x = \frac{98100}{999} = \frac{10900}{111}
+\]
+\subsection*{2.2.8}
+To address the loss of significance in solving \( ax^2 + bx + c = 0 \) using the quadratic formula, we modify the formula using a similar technique as shown in Example 1 on page 56.
+\\
+\\
+For the first root, let's consider:
+\\
+\\
+\[
+x_1 = \frac{{-b + \sqrt{{b^2 - 4ac}}}}{2a}
+\]
+\\
+\\
+We multiply and divide by the conjugate of the numerator to get
+\\
+\\
+\[
+x_1 = \frac{{-b + \sqrt{{b^2 - 4ac}}}}{2a} \times \frac{{-b - \sqrt{{b^2 - 4ac}}}}{-b - \sqrt{{b^2 - 4ac}}}
+\]
+\[
+x_1 = \frac{{-b^2 + (b^2 - 4ac)}}{-2a(b + \sqrt{{b^2 - 4ac}})}
+\]
+\[
+x_1 = \frac{{-4ac}}{-2a(b + \sqrt{{b^2 - 4ac}})}
+\]
+\[
+x_1 = \frac{{2c}}{b + \sqrt{{b^2 - 4ac}}}
+\]
+\\
+\\
+This new form avoids the loss of significance when \( 4ac \ll b^2 \).
+\\
+\\
+For the other root, we can calculate it as:
+\\
+\\
+\[
+x_2 = \frac{{-b - \sqrt{{b^2 - 4ac}}}}{2a}
+\]
+\\
+\\
+And since \( x_1 \times x_2 = \frac{c}{a} \),
+\[
+x_2 = \frac{c}{ax_1}
+\]
+\\
+\\
+So to avoid loss of significance, we can use:
+\\
+\\
+\[
+x_1 = \frac{{2c}}{b + \sqrt{{b^2 - 4ac}}}
+\]
+\[
+x_2 = \frac{c}{ax_1}
+\]
+
+\section*{Problem 2}
+The problem asks us to find a value $\varepsilon$ such that the approximation $\cos (x) \approx 1$ holds within the given accuracy $\frac{1}{2} \times 10^{-8}$ for $|x|<\varepsilon$. We can use the Taylor series expansion of $\cos (x)$ to analyze the error.
+The Taylor series of $\cos (x)$ centered at $x=0$ is:
+$$
+\cos (x)=1-\frac{x^2}{2 !}+\frac{x^4}{4 !}-\frac{x^6}{6 !}+\cdots
+$$
+Truncating this series after the first term, we get $\cos (x) \approx 1$.
+The error term $E(x)$ can be found as:
+$$
+E(x)=\cos (x)-1=-\frac{x^2}{2 !}+\frac{x^4}{4 !}-\frac{x^6}{6 !}+\cdots
+$$
+We are interested in finding $\varepsilon$ such that $|E(x)|<\frac{1}{2} \times 10^{-8}$ when $|x|<\varepsilon$.
+To bound the error, I use the first term:
+$$
+|E(x)|=\left|\frac{-x^2}{2 !}\right|=\frac{x^2}{2}
+$$
+I want this to be less than $\frac{1}{2} \times 10^{-8}$ :
+$$
+\frac{x^2}{2}<\frac{1}{2} \times 10^{-8}
+$$
+Solving this inequality, gives me:
+$$
+x^2<10^{-8}
+$$
+$$
+|x|<10^{-4}
+$$
+Thus, $\varepsilon=10^{-4}$.
+\\
+\\
+For $|x|<10^{-4}$, the approximation $\cos (x) \approx 1$ should be accurate to within $\frac{1}{2} \times 10^{-8}$.
+The function $f(x)$ can then be defined as:
+$$
+f(x) = \begin{cases} 
+1 & ; |x| < 10^{-4} \\
+\cos(x) - \sin(x) & ; |x| \geq 10^{-4}
+\end{cases}
+$$
+
+\section*{Problem 3}
+\subsection*{Find the binary expressions}
+\textbf{117 in Decimal to Binary:}
+\\
+\\
+$117 \div 2=58$ remainder 1
+\\
+$58 \div 2=29$ remainder 0
+\\
+$29 \div 2=14$ remainder 1
+\\
+$14 \div 2=7$ remainder 0
+\\
+$7 \div 2=3$ remainder 1
+\\
+$3 \div 2=1$ remainder 1
+\\
+$1 \div 2=0$ remainder 1
+\\
+\\
+If we read the remainders from bottom to top, we get 1110101.
+\\
+\\
+\textbf{149 in Decimal to Binary:}
+\\
+\\
+$149 \div 2=74$ remainder 1
+\\
+$74 \div 2=37$ remainder 0
+\\
+$37 \div 2=18$ remainder 1
+\\
+$18 \div 2=9$ remainder 0
+\\
+$9 \div 2=4$ remainder 1
+\\
+$4 \div 2=2$ remainder 0
+\\
+$2 \div 2=1$ remainder 0
+\\
+$1 \div 2=0$ remainder 1
+\\
+\\
+Reading the remainders from bottom to top, we get ' 10010101 '.
+\\
+\\
+For the fractional part, '.7' in this case for 149.7 , we can use multiplication by 2:
+\\
+\\
+$0.7 \times 2=1.4$ 
+\\
+$0.4 \times 2=0.8$ 
+\\
+$0.8 \times 2=1.6$
+\\
+$0.6 \times 2=1.2$
+\\
+$0.2 \times 2=0.4$
+\\
+We can continue this process to get more precision, but l'll stop here. Concatenating these gives me ' $10110{ }^`$ for the fractional part.
+Therefore 149.7 in binary is approximately $10010101.10110$
+
+
+\section*{Problem 4}
+\textbf{A)} The largest number that can be represented in the Marc-32 system is $3.4 \times 10^4$, which is less than $10^{40}$. Therefore, $10^{40}$ is not a Marc-32 number.
+\\
+\\
+\textbf{B)} The number $2^{-1}+2^{-29}$ translates to approximately 0.50000000186 when converted to decimal form. Since Marc-32 can only accommodate up to 6 decimal places, this number cannot be accurately represented and is thus not a Marc- 32 number.
+\\
+\\
+\textbf{C)} Writing $\frac{1}{3}$ in decimal form reveals that it has an infinite repeating sequence. This exceeds the number of bits that can be allocated in the Marc-32 system. Therefore, $\frac{1}{3}$ is not a Marc32 number.
+\\
+\\
+\textbf{D)} Likewise, converting $\frac{1}{5}$ to its decimal form yields 0.2 , which when translated into binary becomes an infinite repeating sequence $(0 . \overline{0011})_2$. This also exceeds the number of bits that can be allocated in the Marc-32 system, making $\frac{1}{5}$ not a Marc-32 number as well.
+\\
+\\
+This answer effectively addresses the problem by scrutinizing each of the given numbers to determine whether they can be accurately represented in the Marc-32 system, taking into account the specific limitations of the system.
+
+\section*{Problem 5}
+In order to convert decimal numbers to a specialized Marc-32 format, I implemented a Python script. The program performs several key steps: it calculates the sign bit based on the number's sign, converts both the integer and fractional parts to binary, normalizes the number, calculates a biased exponent, and finally generates the mantissa. These steps are modularized into specific Python functions.
+\\
+\\
+Using this approach, the following Marc-32 representations were obtained for the given decimal numbers:
+\\
+\\
+For 11.5 , the representation is ' $\mathbf{0} \times \mathbf{1 3 0 1 8 0 0 0 0 0 0}$ '
+\\
+\\
+For 1.0625 , the representation is ' $\mathbf{0 \times 1 2 7 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0}$ '
+\\
+\\
+For 2.0009765625 , the representation is ' $\mathbf{0} \times \mathbf{1 2 8 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0}$ '
+\\
+\\
+For 14.52 , the representation is \textbf{' $0 \times 131851EB852$}
+
+
+
+
+\end{document}

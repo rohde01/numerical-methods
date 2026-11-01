@@ -1,0 +1,216 @@
+%%
+%% This is file `sample-manuscript.tex',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% samples.dtx  (with options: `manuscript')
+%% 
+%% IMPORTANT NOTICE:
+%% 
+%% For the copyright see the source file.
+%% 
+%% Any modified versions of this file must be renamed
+%% with new filenames distinct from sample-manuscript.tex.
+%% 
+%% For distribution of the original source see the terms
+%% for copying and modification in the file samples.dtx.
+%% 
+%% This generated file may be distributed as long as the
+%% original source files, as listed above, are part of the
+%% same distribution. (The sources need not necessarily be
+%% in the same archive or directory.)
+%%
+%% Commands for TeXCount
+%TC:macro \cite [option:text,text]
+%TC:macro \citep [option:text,text]
+%TC:macro \citet [option:text,text]
+%TC:envir table 0 1
+%TC:envir table* 0 1
+%TC:envir tabular [ignore] word
+%TC:envir displaymath 0 word
+%TC:envir math 0 word
+%TC:envir comment 0 0
+%%
+%%
+%% The first command in your LaTeX source must be the \documentclass command.
+%%%% Small single column format, used for CIE, CSUR, DTRAP, JACM, JDIQ, JEA, JERIC, JETC, PACMCGIT, TAAS, TACCESS, TACO, TALG, TALLIP (formerly TALIP), TCPS, TDSCI, TEAC, TECS, TELO, THRI, TIIS, TIOT, TISSEC, TIST, TKDD, TMIS, TOCE, TOCHI, TOCL, TOCS, TOCT, TODAES, TODS, TOIS, TOIT, TOMACS, TOMM (formerly TOMCCAP), TOMPECS, TOMS, TOPC, TOPLAS, TOPS, TOS, TOSEM, TOSN, TQC, TRETS, TSAS, TSC, TSLP, TWEB.
+% \documentclass[acmsmall]{acmart}
+
+%%%% Large single column format, used for IMWUT, JOCCH, PACMPL, POMACS, TAP, PACMHCI
+% \documentclass[acmlarge,screen]{acmart}
+
+%%%% Large double column format, used for TOG
+% \documentclass[acmtog, authorversion]{acmart}
+
+%%%% Generic manuscript mode, required for submission
+%%%% and peer review
+\documentclass[manuscript,screen,review]{acmart}
+%% Fonts used in the template cannot be substituted; margin 
+%% adjustments are not allowed.
+%%
+%% \BibTeX command to typeset BibTeX logo in the docs
+\AtBeginDocument{%
+  \providecommand\BibTeX{{%
+    \normalfont B\kern-0.5em{\scshape i\kern-0.25em b}\kern-0.8em\TeX}}}
+
+%% Rights management information.  This information is sent to you
+%% when you complete the rights form.  These commands have SAMPLE
+%% values in them; it is your responsibility as an author to replace
+%% the commands and values with those provided to you when you
+%% complete the rights form.
+\setcopyright{acmcopyright}
+\copyrightyear{2018}
+\acmYear{2018}
+\acmDOI{XXXXXXX.XXXXXXX}
+
+%% These commands are for a PROCEEDINGS abstract or paper.
+\acmConference[Conference acronym 'XX]{Make sure to enter the correct
+  conference title from your rights confirmation emai}{June 03--05,
+  2018}{Woodstock, NY}
+%
+%  Uncomment \acmBooktitle if th title of the proceedings is different
+%  from ``Proceedings of ...''!
+%
+\acmBooktitle{Woodstock '18: ACM Symposium on Neural Gaze Detection,
+ June 03--05, 2018, Woodstock, NY} 
+\acmPrice{15.00}
+\acmISBN{978-1-4503-XXXX-X/18/06}
+
+
+%%
+%% Submission ID.
+%% Use this when submitting an article to a sponsored event. You'll
+%% receive a unique submission ID from the organizers
+%% of the event, and this ID should be used as the parameter to this command.
+%%\acmSubmissionID{123-A56-BU3}
+
+%%
+%% For managing citations, it is recommended to use bibliography
+%% files in BibTeX format.
+%%
+%% You can then either use BibTeX with the ACM-Reference-Format style,
+%% or BibLaTeX with the acmnumeric or acmauthoryear sytles, that include
+%% support for advanced citation of software artefact from the
+%% biblatex-software package, also separately available on CTAN.
+%%
+%% Look at the sample-*-biblatex.tex files for templates showcasing
+%% the biblatex styles.
+%%
+
+%%
+%% The majority of ACM publications use numbered citations and
+%% references.  The command \citestyle{authoryear} switches to the
+%% "author year" style.
+%%
+%% If you are preparing content for an event
+%% sponsored by ACM SIGGRAPH, you must use the "author year" style of
+%% citations and references.
+%% Uncommenting
+%% the next command will enable that style.
+%%\citestyle{acmauthoryear}
+
+%%
+%% end of the preamble, start of the body of the document source.
+\begin{document}
+
+\title{Task 5  Numerical Methods}
+\author{Carl-Emil Rohde \\ kvb125@alumni.ku.dk}
+\date{September 2023}
+
+\maketitle
+
+\section*{Problem 1}
+I use the Hungarian Algorithm to solve the assignment problem. The initial cost matrix is:
+\[
+\begin{pmatrix}
+3 & 3 & 1 & 2 & 10 \\
+1 & 9 & 9 & 4 & 10 \\
+9 & 9 & 3 & 10 & 9 \\
+9 & 10 & 1 & 7 & 6 \\
+10 & 7 & 7 & 1 & 3
+\end{pmatrix}
+\]
+
+\section*{Step 1: Row and Column Reduction}
+
+\subsection*{Row Reduction}
+Subtract the smallest element in each row from every element in that row. The matrix becomes:
+\[
+\begin{pmatrix}
+2 & 2 & 0 & 1 & 9 \\
+0 & 8 & 8 & 3 & 9 \\
+6 & 6 & 0 & 7 & 6 \\
+8 & 9 & 0 & 6 & 5 \\
+9 & 6 & 6 & 0 & 2
+\end{pmatrix}
+\]
+
+\subsection*{Column Reduction}
+Subtract the smallest element in each column from every element in that column. The matrix remains the same in this case:
+\[
+\begin{pmatrix}
+2 & 0 & 0 & 1 & 7 \\
+0 & 6 & 8 & 3 & 7 \\
+6 & 4 & 0 & 7 & 4 \\
+8 & 7 & 0 & 6 & 3 \\
+9 & 4 & 6 & 0 & 0
+\end{pmatrix}
+\]
+
+\section*{Step 2: Covering Zeros with the Minimum Number of Lines}
+Draw lines to cover all the zeros in the matrix. I can cover all zeros with 3 lines (vertical):
+\[
+\begin{pmatrix}
+2 & [0] & [0] & 1 & 7 \\
+0 & 6 & 8 & 3 & 7 \\
+6 & 4 & [0] & 7 & 4 \\
+8 & 7 & [0] & 6 & 3 \\
+9 & 4 & 6 & [0] & [0]
+\end{pmatrix}
+\]
+
+\section*{Step 3: Adjusting the Matrix}
+Find the smallest non-covered element, which is 1. Subtract 1 from all non-covered elements to get:
+\[
+\begin{pmatrix}
+1 & 0 & 0 & 0 & 6 \\
+0 & 5 & 7 & 2 & 6 \\
+5 & 3 & 0 & 6 & 3 \\
+7 & 6 & 0 & 5 & 2 \\
+8 & 3 & 5 & 0 & 0
+\end{pmatrix}
+\]
+
+\section*{Step 4: Covering Zeroes Again}
+Cover all zeros with 5 lines (horizontal), one for each row:
+\[
+\begin{pmatrix}
+[1] & [0] & [0] & [0] & [6] \\
+[0] & [5] & [7] & [2] & [6] \\
+[5] & [3] & [0] & [6] & [3] \\
+[7] & [6] & [0] & [5] & [2] \\
+[8] & [3] & [5] & [0] & [0]
+\end{pmatrix}
+\]
+
+
+\section*{Step 5: Making Assignments}
+One optimal assignment is as follows:
+\begin{itemize}
+    \item Assign the first worker to the second job (0 at [1, 2])
+    \item Assign the second worker to the first job (0 at [2, 1])
+    \item Assign the third worker to the third job (0 at [3, 3])
+    \item Assign the fourth worker to the fourth job (0 at [4, 4])
+    \item Assign the fifth worker to the fifth job (0 at [5, 5])
+\end{itemize}
+
+The total cost of this assignment is 17.
+
+\section*{Problem 2}
+
+\end{document}
+\end{document}
+\endinput
+%%
+%% End of file `sample-authordraft.tex'.
